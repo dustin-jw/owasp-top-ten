@@ -8,17 +8,9 @@
     <title>{{ title }}</title>
     <meta name="description" content="{{ description }}">
 
-    <!-- TODO: add link tags, other meta tags, open graph info, etc. -->
     <link rel="stylesheet" href="/styles.css">
   </head>
   <body>
-    {% block header %}
-      <header>
-        <div class="cmp-container">
-          <p>This is the header.</p>
-        </div>
-      </header>
-    {% endblock %}
     <main>
       {% block content %}
         <article class="cmp-container">
@@ -26,12 +18,5 @@
         </article>
       {% endblock %}
     </main>
-    {% block footer %}
-      <footer>
-        <div class="cmp-container">
-          <p>This is the footer.</p>
-        </div>
-      </footer>
-    {% endblock %}
   </body>
 </html>
