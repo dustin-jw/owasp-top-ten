@@ -1,3 +1,30 @@
-# Eleventy Starter
+# OWASP Top Ten
 
-Use this starter template to create a new Eleventy project with the click of a button!
+Use this presentation to run through the OWASP Top Ten with people who may not
+be familiar with it.
+
+## Getting Started
+
+Clone the repo, then install dependencies:
+
+```sh
+npm install
+```
+
+To run the site in development mode:
+
+```sh
+npm start
+```
+
+To build the site for production:
+
+```sh
+npm run build
+```
+
+Lint HTML and CSS:
+
+```sh
+npm run lint
+```
