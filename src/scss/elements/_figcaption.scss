@@ -1,0 +1,7 @@
+@use '../tools/functions';
+
+figcaption {
+  font-size: functions.fluid-size('base');
+  line-height: calc(1em + 0.5rem);
+  margin-block-start: functions.fluid-size('kilo');
+}
