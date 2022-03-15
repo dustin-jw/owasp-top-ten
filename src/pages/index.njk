@@ -163,3 +163,41 @@ layout: layout.njk
     </ul>
   </div>
 </div>
+
+<div class="cmp-slide">
+  <div class="cmp-stack">
+    <h3>
+      Broken Access Control Prevention
+    </h3>
+    <ul>
+      <li>
+        Deny by default, unless it should be publicly available
+      </li>
+      <li>
+        Implement access control mechanisms once, and re-use them (think
+        middleware for Express)
+      </li>
+      <li>
+        Minimize Cross-Origin Resource Sharing (CORS)
+      </li>
+      <li>
+        Enforce record ownership. Don't just accept that the user can create,
+        read, update, or delete any record
+      </li>
+      <li>
+        Disable web server directory listing and exclude metadata and backup
+        files from web roots (don't serve `server.js`)
+      </li>
+      <li>
+        Log access control failures, and alert admins to repeated failures
+      </li>
+      <li>
+        Rate limit API access to minimize the harm from automated attacks
+      </li>
+      <li>
+        Invalidate user sessions on the server after logout, and revoke access
+        to JWTs
+      </li>
+    </ul>
+  </div>
+</div>
