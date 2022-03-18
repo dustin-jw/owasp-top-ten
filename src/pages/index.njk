@@ -131,6 +131,48 @@ layout: layout.njk
 <div class="cmp-slide">
   <div class="cmp-stack">
     <h3>
+      For Example
+    </h3>
+    <p>
+      A user goes to their account page at <code class="language-none">/app/account?id=123</code> and the
+      backend looks something like:
+    </p>
+    <pre><code class="language-js">app.get('/app/account', (req, res) => {
+  const info = getAccountInfo(req.params.id);
+  res.send(info);
+});</code></pre>
+    <p>
+      What could go wrong?
+    </p>
+  </div>
+</div>
+
+<div class="cmp-slide">
+  <div class="cmp-stack">
+    <h3>
+      One Possible Fix
+    </h3>
+    <p>
+      Check that the user has access to the thing they're trying to fetch.
+    </p>
+    <pre><code class="language-js">app.get('/app/account', (req, res) => {
+  if (!isUserAuthenticated(req)) {
+    res.status(401).send('Unauthorized');
+  }
+
+  if (!userCanAccessRecord(req)) {
+    res.status(403).send('Forbidden');
+  }
+
+  const info = getAccountInfo(req.params.id);
+  res.send(info);
+});</code></pre>
+  </div>
+</div>
+
+<div class="cmp-slide">
+  <div class="cmp-stack">
+    <h3>
       Broken Access Control Vulnerabilities
     </h3>
     <ul>

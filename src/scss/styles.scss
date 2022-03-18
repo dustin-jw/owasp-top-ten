@@ -2,6 +2,8 @@
 @use 'generic/reset';
 @use 'generic/sticky-footer';
 
+@use 'vendor/prism.scss';
+
 // elements, default rules that should be easy to override
 @use 'elements/root';
 @use 'elements/h1';
@@ -11,7 +13,6 @@
 @use 'elements/p';
 @use 'elements/header';
 @use 'elements/footer';
-@use 'elements/code';
 @use 'elements/figcaption';
 @use 'elements/ol';
 @use 'elements/ul';
