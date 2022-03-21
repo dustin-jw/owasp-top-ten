@@ -105,30 +105,6 @@ layout: layout.njk
   </div>
 </div>
 
-{# <div class="cmp-slide">
-  <div class="cmp-stack">
-    <h2>
-      2. Cryptographic Failures
-    </h2>
-    <p>
-      This has to with sensitive information like passwords, credit card
-      numbers, health records, and other secrets. These need to be protected
-      both while in transit (by using HTTPS, for example) and while at rest (by
-      encrypting data).
-    </p>
-    <p>
-      Failures often have to do with unencrypted data (like plain-text
-      passwords), weak algorithms or cryptographic functions, or storing
-      sensitive data unnecessarily.
-    </p>
-    <p>
-      <a href="https://owasp.org/Top10/A02_2021-Cryptographic_Failures/#example-attack-scenarios">
-        Example Attack Scenarios
-      </a>
-    </p>
-  </div>
-</div> #}
-
 <div class="cmp-slide">
   <h2>
     1. Broken Access Control
@@ -234,6 +210,79 @@ layout: layout.njk
   <h2>
     2. Cryptographic Failures
   </h2>
+</div>
+
+<div class="cmp-slide">
+  <div class="cmp-stack">
+    <h3>
+      Cryptographic Failures
+      <span class="util-visually-hidden">
+        Definition
+      </span>
+    </h3>
+    <p>
+      A cryptographic failure can be the result of missing or poorly implemented
+      data encryption, or the failure to use secure protocols.
+    </p>
+    <p>
+      Sensitive data needs to be protected both while in transit and while at
+      rest. What is considered sensitive data is often determined by privacy
+      laws or regulations, but these are some common examples:
+    </p>
+    <ul>
+      <li>
+        Passwords
+      </li>
+      <li>
+        Credit card numbers
+      </li>
+      <li>
+        Health records and personal information
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="cmp-slide">
+  <div class="cmp-stack">
+    <h3>
+      Protecting Data in Transit
+    </h3>
+    <ul>
+      <li>
+        Encrypt all data in transit with secure protocols such as TLS (using
+        HTTPS instead of HTTP, for example)
+      </li>
+      <li>
+        Do not transport sensitive data over FTP or SMTP
+      </li>
+      <li>
+        Avoid transmitting data in clear text
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="cmp-slide">
+  <div class="cmp-stack">
+    <h3>
+      Protecting Data at Rest
+    </h3>
+    <ul>
+      <li>
+        Do not store sensitive data unnecessarily, but encrypt the data that
+        does need to be stored
+      </li>
+      <li>
+        Do not use weak or old cryptographic algorithms or protocols or
+        deprecated hash functions (MD5 or SHA1, for example)
+      </li>
+      <li>
+        Practice proper key management and ensure that they are generated
+        cryptographically randomly
+      </li>
+    </ul>
+  </div>
 </div>
 
 <div class="cmp-slide">
