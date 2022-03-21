@@ -108,145 +108,6 @@ layout: layout.njk
 {# <div class="cmp-slide">
   <div class="cmp-stack">
     <h2>
-      1. Broken Access Control
-    </h2>
-    <p>
-      Access control prevents users from acting outside of their intended
-      permissions. Broken access control can lead to:
-    </p>
-    <ul>
-      <li>
-        Exposure of sensitive information
-      </li>
-      <li>
-        Modification or destruction of data
-      </li>
-      <li>
-        Users exceeding their priveleges to perform restricted actions
-      </li>
-    </ul>
-  </div>
-</div>
-
-<div class="cmp-slide">
-  <div class="cmp-stack">
-    <h3>
-      For Example
-    </h3>
-    <p>
-      A user goes to their account page at <code class="language-none">/app/account?id=123</code> and the
-      backend looks something like:
-    </p>
-    <pre><code class="language-js">app.get('/app/account', (req, res) => {
-  const info = getAccountInfo(req.params.id);
-  res.send(info);
-});</code></pre>
-    <p>
-      What could go wrong?
-    </p>
-  </div>
-</div>
-
-<div class="cmp-slide">
-  <div class="cmp-stack">
-    <h3>
-      One Possible Fix
-    </h3>
-    <p>
-      Check that the user has access to the thing they're trying to fetch.
-    </p>
-    <pre><code class="language-js">app.get('/app/account', (req, res) => {
-  if (!isUserAuthenticated(req)) {
-    res.status(401).send('Unauthorized');
-  }
-
-  if (!userCanAccessRecord(req)) {
-    res.status(403).send('Forbidden');
-  }
-
-  const info = getAccountInfo(req.params.id);
-  res.send(info);
-});</code></pre>
-  </div>
-</div>
-
-<div class="cmp-slide">
-  <div class="cmp-stack">
-    <h3>
-      Broken Access Control Vulnerabilities
-    </h3>
-    <ul>
-      <li>
-        Access intended to only be granted for certain roles or users is
-        available to everyone
-      </li>
-      <li>
-        URL tampering, modifying application state, or modifying API requests
-      </li>
-      <li>
-        Providing unique identifiers that enable viewing/editing someone else's
-        account
-      </li>
-      <li>
-        Missing access controls for POST, PUT, and DELETE methods
-      </li>
-      <li>
-        Elevation of privelege: not logged in acting as user acting as admin
-      </li>
-      <li>
-        Tampering with cookies or a JSON Web Token (JWT) to elevate privelege
-      </li>
-      <li>
-        CORS misconfiguration allowing access from untrusted origins
-      </li>
-      <li>
-        Force browsing to access authenticated or priveleged pages
-      </li>
-    </ul>
-  </div>
-</div>
-
-<div class="cmp-slide">
-  <div class="cmp-stack">
-    <h3>
-      Broken Access Control Prevention
-    </h3>
-    <ul>
-      <li>
-        Deny by default, unless it should be publicly available
-      </li>
-      <li>
-        Implement access control mechanisms once, and re-use them (think
-        middleware for Express)
-      </li>
-      <li>
-        Minimize Cross-Origin Resource Sharing (CORS)
-      </li>
-      <li>
-        Enforce record ownership. Don't just accept that the user can create,
-        read, update, or delete any record
-      </li>
-      <li>
-        Disable web server directory listing and exclude metadata and backup
-        files from web roots (don't serve `server.js`)
-      </li>
-      <li>
-        Log access control failures, and alert admins to repeated failures
-      </li>
-      <li>
-        Rate limit API access to minimize the harm from automated attacks
-      </li>
-      <li>
-        Invalidate user sessions on the server after logout, and revoke access
-        to JWTs
-      </li>
-    </ul>
-  </div>
-</div>
-
-<div class="cmp-slide">
-  <div class="cmp-stack">
-    <h2>
       2. Cryptographic Failures
     </h2>
     <p>
@@ -272,6 +133,101 @@ layout: layout.njk
   <h2>
     1. Broken Access Control
   </h2>
+</div>
+
+<div class="cmp-slide">
+  <div class="cmp-stack">
+    <h3>
+      Broken Access Control
+      <span class="util-visually-hidden">
+        Definition
+      </span>
+    </h3>
+    <p>
+      Broken Access Control allows users to act outside of their intended
+      priveleges. For example, a typical user being able to access admin pages
+      or features.
+    </p>
+    <p>
+      This can lead to:
+    </p>
+    <ul>
+      <li>
+        Exposure of sensitive information
+      </li>
+      <li>
+        Modification or destruction of data
+      </li>
+      <li>
+        Users exceeding their priveleges to perform restricted actions
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="cmp-slide">
+  <div class="cmp-stack">
+    <h3>
+      Broken Access Control
+      <span class="util-visually-hidden">
+        Example
+      </span>
+    </h3>
+    <p>
+      A user goes to their account page at <code class="language-none">/account?id=576</code> and the
+      backend looks something like:
+    </p>
+    <pre><code class="language-js">app.get('/account', (req, res) => {
+  const info = getAccountInfo(req.params.id);
+  res.send(info);
+});</code></pre>
+    <p>
+      What could go wrong?
+    </p>
+  </div>
+</div>
+
+<div class="cmp-slide">
+  <div class="cmp-stack">
+    <h3>
+      Broken Access Control Vulnerabilities
+    </h3>
+    <ul>
+      <li>
+        Tampering with URLs, cookies, JWTs, or application state to gain access
+        to restricted resources
+      </li>
+      <li>
+        Missing access controls for API methods, CORS misconfiguration, or not
+        following the principle of least privelege (deny by default)
+      </li>
+      <li>
+        Elevation of privelege. Acting as a user without logging in, or a user
+        acting as admin
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="cmp-slide">
+  <div class="cmp-stack">
+    <h3>
+      Broken Access Control Prevention
+    </h3>
+    <ul>
+      <li>
+        Deny by default, enforce record ownership, invalidate sessions after
+        logout, and rate limit APIs
+      </li>
+      <li>
+        Implement access control mechanisms once, then re-use throughout the
+        application (minimizing surface area for bugs)
+      </li>
+      <li>
+        Log access control failures and alert admins after repeated failures
+      </li>
+    </ul>
+  </div>
 </div>
 
 <div class="cmp-slide">
