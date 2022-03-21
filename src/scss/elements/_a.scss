@@ -1,0 +1,9 @@
+@use '../tools/functions';
+
+a {
+  color: var(--link);
+
+  &:hover {
+    text-decoration: none;
+  }
+}
