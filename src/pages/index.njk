@@ -613,6 +613,52 @@ layout: layout.njk
 </div>
 
 <div class="cmp-slide">
+  <div class="cmp-stack">
+    <h3>
+      <span class="util-visually-hidden">
+        An example of
+      </span>
+      Software and Data Integrity Failures
+    </h3>
+    <p>
+      These failures relate to a lack of protection against integrity violations
+      in code and infrastructure. Insecure CI/CD pipelines with auto-update
+      functionality can make this worse.
+    </p>
+    <p>
+      A high profile example of this happened in January 2022, when the author
+      of the widely used <code class="language-js">colors.js</code> and
+      <code class="language-js">faker.js</code> npm packages sabotaged his own
+      repositories, potentially impacting millions of projects downstream.
+    </p>
+  </div>
+</div>
+
+<div class="cmp-slide">
+  <div class="cmp-stack">
+    <h3>
+      <span class="util-visually-hidden">
+        Preventing
+      </span>
+      Software and Data Integrity Failures
+    </h3>
+    <ul>
+      <li>
+        Verify that software is from the correct source and has not been altered
+      </li>
+      <li>
+        Use libraries from trusted repositories, and use security tools to
+        verify they do not contain known vulnerabilities
+      </li>
+      <li>
+        Use a review process for code and configuration changes to minimize the
+        risk of malicious code being merged
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="cmp-slide">
   <h2>
     9. Security Logging and Monitoring Failures
   </h2>
