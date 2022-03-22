@@ -542,6 +542,71 @@ layout: layout.njk
 </div>
 
 <div class="cmp-slide">
+  <div class="cmp-stack">
+    <h3>
+      <span class="util-visually-hidden">
+        Vulnerabilities related to
+      </span>
+      Identification and Authentication Failures
+    </h3>
+    <p>
+      Authentication weaknesses make it easier for attackers to gain access to
+      user accounts. Applications may be vulnerable to authenication-related
+      attacks if:
+    </p>
+    <ul>
+      <li>
+        There is no protection against automated attacks, including when the
+        attacker has valid usernames/passwords
+      </li>
+      <li>
+        Weak, default, or well-known passwords are allowed ("Password1")
+      </li>
+      <li>
+        Weak or ineffective account recovery methods are used, such as
+        knowledge-based security questions
+      </li>
+      <li>
+        Multi-factor authentication is missing or ineffective
+      </li>
+      <li>
+        Session identifiers are exposed in the URL, reused after a successful
+        login, or incorrectly invalidated after logou
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="cmp-slide">
+  <div class="cmp-stack">
+    <h3>
+      Preventing Identification and Authentication Failures
+    </h3>
+    <ul>
+      <li>
+        Implement multi-factor authentication to prevent automated attacks from
+        succeeding
+      </li>
+      <li>
+        Change default credentials, especially for admin users
+      </li>
+      <li>
+        Check for weak passwords and disallow them when users create accounts or
+        change their passwords (<a href="https://github.com/OWASP/passfault/blob/master/wordlists/wordlists/10k-worst-passwords.txt">10,000 worst passwords</a>)
+      </li>
+      <li>
+        Follow the <a href="https://pages.nist.gov/800-63-3/sp800-63b.html#-5112-memorized-secret-verifiers">National Institute of Standards and Technology (NIST) guidelines</a>
+        for password length, complexity, and rotation
+      </li>
+      <li>
+        Limit or delay failed login attempts, and alert admins when brute force
+        or other attacks are detected
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="cmp-slide">
   <h2>
     8. Software and Data Integrity Failures
   </h2>
