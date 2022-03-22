@@ -292,6 +292,98 @@ layout: layout.njk
 </div>
 
 <div class="cmp-slide">
+  <div class="cmp-stack">
+    <h3>
+      Injection
+      <span class="util-visually-hidden">
+        Definition
+      </span>
+    </h3>
+    <p>
+      Injection can refer to Cross-site Scripting (XSS), SQL Injection, or other
+      situations where user-supplied data is not validated, filtered, or
+      sanitized.
+    </p>
+  </div>
+</div>
+
+<div class="cmp-slide">
+  <div class="cmp-stack">
+    <h3>
+      Injection
+      <span class="util-visually-hidden">
+        Example 1
+      </span>
+    </h3>
+    <figure>
+      <img src="https://imgs.xkcd.com/comics/exploits_of_a_mom.png" alt="">
+      <figcaption>
+        <a href="https://xkcd.com/327/">xkcd: Exploits of a Mom</a>
+      </figcaption>
+    </figure>
+  </div>
+</div>
+
+<div class="cmp-slide">
+  <div class="cmp-stack">
+    <h3>
+      Injection
+      <span class="util-visually-hidden">
+        Example 2
+      </span>
+    </h3>
+    <p>
+      Here we have a vulnerable query that uses untrusted data.
+    </p>
+    <pre class="language-js"><code class="language-js">const query = `
+  SELECT *
+  FROM accounts
+  WHERE custID='${req.params.id}'";
+`;
+</code></pre>
+    <p>
+      An attacker can exploit this vulnerability to return all records by using
+      <br>
+      <code class="language-js">id=' or '1'='1</code>.
+    </p>
+    <p>
+      The query effectively becomes:
+    </p>
+    <pre class="language-js"><code class="language-js">const query = `
+  SELECT *
+  FROM accounts
+  WHERE custID='' or '1'='1'";
+`;
+</code></pre>
+  </div>
+</div>
+
+<div class="cmp-slide">
+  <div class="cmp-stack">
+    <h3>
+      Injection Prevention
+    </h3>
+    <ul>
+      <li>
+        Use safe APIs with parameterized interfaces (rather than constructing
+        SQL manually, for example)
+      </li>
+      <li>
+        Define valid patterns that user input can fit into, and validate
+        user-supplied data
+      </li>
+      <li>
+        Use LIMIT to prevent returning all records in the event of successful
+        injection
+      </li>
+      <li>
+        Escape special characters
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="cmp-slide">
   <h2>
     4. Insecure Design
   </h2>

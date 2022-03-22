@@ -1,7 +1,8 @@
 @use '../tools/functions';
 
 figcaption {
-  font-size: functions.fluid-size('base');
+  font-size: functions.fluid-size('deci');
   line-height: calc(1em + 0.5rem);
-  margin-block-start: functions.fluid-size('kilo');
+  margin-block-start: functions.fluid-size('base');
+  text-align: center;
 }
