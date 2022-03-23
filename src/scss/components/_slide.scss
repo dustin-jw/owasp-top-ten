@@ -2,10 +2,7 @@
   display: grid;
   min-height: 100vh;
   place-items: center;
-
-  @supports (-webkit-font-smoothing: none) {
-    scroll-snap-align: center;
-  }
+  scroll-snap-align: center;
 
   > h2 {
     text-align: center;
