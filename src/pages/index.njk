@@ -742,3 +742,49 @@ layout: layout.njk
     10. Server-Side Request Forgery (SSRF)
   </h2>
 </div>
+
+<div class="cmp-slide">
+  <div class="cmp-stack">
+    <h3>
+      SSRF
+      <span class="util-visually-hidden">
+        Definition
+      </span>
+    </h3>
+    <p>
+      SSRF flaws occur when applications fetch remote resources without
+      validating user-supplied URLs. These attacks can often bypass security
+      measures such as firewalls, VPNs, or access control lists.
+    </p>
+    <p>
+      This can allow attackers to scan internal servers for open ports, access
+      sensitive data either from files or localhost ports, or perform Remote
+      Code Execution or Denial of Service attacks.
+    </p>
+  </div>
+</div>
+
+<div class="cmp-slide">
+  <div class="cmp-stack">
+    <h3>
+      SSRF Prevention
+    </h3>
+    <ul>
+      <li>
+        Segment remote resource access to reduce impact of SSRF
+      </li>
+      <li>
+        Deny by default to block all but essential network traffic
+      </li>
+      <li>
+        Sanitize and validate all client-supplied input data
+      </li>
+      <li>
+        Use a positive allow list for the URL schema, port, and destination
+      </li>
+      <li>
+        Do not send raw responses to clients and disable HTTP redirects
+      </li>
+    </ul>
+  </div>
+</div>
