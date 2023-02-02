@@ -23,7 +23,7 @@ To build the site for production:
 npm run build
 ```
 
-Lint HTML and CSS:
+Lint for styling issues:
 
 ```sh
 npm run lint
